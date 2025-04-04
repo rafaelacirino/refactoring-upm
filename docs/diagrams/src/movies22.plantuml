@@ -21,8 +21,8 @@ class Rental {
 + double getCharge()
 + int getFrequentRenterPoints()
 + int getDaysRented()
-+ Movie getMovie()
-+ int getStatementLine()
++ String getMovieTitle()
++ String getStatementLine()
 }
 
 class Movie {

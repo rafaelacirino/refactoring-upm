@@ -3,10 +3,9 @@ package usantatecla.movies.v22;
 public class Rental {
 
 	private usantatecla.movies.v22.Movie movie;
-
 	private int daysRented;
 
-	public Rental(usantatecla.movies.v22.Movie movie, int daysRented) {
+	public Rental(Movie movie, int daysRented) {
 		this.movie = movie;
 		this.daysRented = daysRented;
 	}
@@ -23,8 +22,11 @@ public class Rental {
 		return daysRented;
 	}
 
-	public Movie getMovie() {
-		return movie;
+	public String getMovieTitle() {
+		return movie.getTitle();
 	}
 
+	public String getStatementLine() {
+		return "\t" + getMovieTitle() + "\t" + getCharge() + "\n";
+	}
 }

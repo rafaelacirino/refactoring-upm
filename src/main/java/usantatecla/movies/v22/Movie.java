@@ -1,30 +1,34 @@
 package usantatecla.movies.v22;
 
-public class Movie {
+public abstract class Movie {
+
+	private static final int FREQUENT_RENTER_POINTS = 1;
 
 	private final String title;
 
-	private Price price;
-
-	public Movie(String title, Price price) {
+	protected Movie(String title) {
 		this.title = title;
-		this.price = price;
 	}
 
-	public double getCharge(int daysRented) {
-		return price.getCharge(daysRented);
-	}
+	public abstract double getCharge(int daysRented);
 
 	public int getFrequentRenterPoints(int daysRented) {
-		return price.getFrequentRenterPoints(daysRented);
-	}
-
-	public void setPrice(Price price) {
-		this.price = price;
+		return FREQUENT_RENTER_POINTS;
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
+	public static Movie newRelease(String title) {
+		return new NewReleaseMovie(title);
+	}
+
+	public static Movie regular(String title) {
+		return new RegularMovie(title);
+	}
+
+	public static Movie children(String title) {
+		return new ChildrenMovie(title);
+	}
 }

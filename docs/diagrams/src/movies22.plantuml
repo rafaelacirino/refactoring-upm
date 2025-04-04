@@ -20,40 +20,35 @@ class Rental {
 + Rental(Movie movie, int daysRented)
 + double getCharge()
 + int getFrequentRenterPoints()
-+ int getDaysRented()
 + String getMovieTitle()
 + String getStatementLine()
 }
 
-class Movie {
+abstract class Movie {
 - String title;
-- Price price;
 
-+ Movie(String title, int priceCode)
++ Movie(String title)
 + double getCharge(int daysRented)
 + int getFrequentRenterPoints(int daysRented)
-+ void setPriceCode(int priceCode)
 + String getTitle()
++ Movie newRelease(String title)
++ Movie regular(String title)
++ Movie children(String title)
 }
 
-class Price {
-+ int getPriceCode()
-+ double getCharge(int daysRented)
-+ int getFrequentRenterPoints(int daysRented)
-}
-class RegularPrice {
+class RegularMovie {
 {static}- double CHARGE = 2.0;
 {static}- double EXTRA CHARGE = 1.5;
 {static}- final int DAYS RENTED THRESHOLD = 2;
 + double getCharge(int daysRented)
 }
-class ChildrenPrice {
+class ChildrenMovie {
 {static}- double CHARGE = 1.5;
 {static}- double EXTRA CHARGE = 1.5;
 {static}- int DAYS RENTED THRESHOLD = 3;
 + double getCharge(int daysRented)
 }
-class NewReleasePrice {
+class NewReleaseMovie {
 {static}- double CHARGE = 3;
 {static}- double EXTRA CHARGE = 1;
 {static}- int DAYS RENTED THRESHOLD = 2;
@@ -63,10 +58,9 @@ class NewReleasePrice {
 
 Customer o-down-> Rental
 Rental -down-> Movie
-Movie *-down- Price
-Price <|-down- RegularPrice
-Price <|-down- ChildrenPrice
-Price <|-down- NewReleasePrice
+Movie <|-down- RegularMovie
+Movie <|-down- ChildrenMovie
+Movie <|-down- NewReleaseMovie
 
 @enduml
 

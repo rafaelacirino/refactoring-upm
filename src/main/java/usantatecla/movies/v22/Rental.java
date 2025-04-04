@@ -1,9 +1,8 @@
 package usantatecla.movies.v22;
 
 public class Rental {
-
-	private usantatecla.movies.v22.Movie movie;
-	private int daysRented;
+	private final Movie movie;
+	private final int daysRented;
 
 	public Rental(Movie movie, int daysRented) {
 		this.movie = movie;
@@ -16,10 +15,6 @@ public class Rental {
 
 	public int getFrequentRenterPoints() {
 		return movie.getFrequentRenterPoints(daysRented);
-	}
-
-	public int getDaysRented() {
-		return daysRented;
 	}
 
 	public String getMovieTitle() {
